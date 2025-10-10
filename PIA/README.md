@@ -4,4 +4,4 @@ En este apartado tenemos varios containers con imagenes de Node-red, InfluxDB, G
 
 El flujo de trabajo es así:
 
-![Diagrama dockers](diagrama_trabajo_dockers.png)
+![Diagrama dockers](recursos_readme/diagrama_trabajo_dockers.png)

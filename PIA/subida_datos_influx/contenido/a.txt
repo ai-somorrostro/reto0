@@ -1,0 +1,1 @@
+aqui tienen que estar el flujo de subida de nodered de stockmarket y el .py de subida de criptos

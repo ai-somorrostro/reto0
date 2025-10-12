@@ -1,6 +1,23 @@
-version: '3.8'
 
 services:
+  python-kaggle:
+    build:
+      context: ./subida_y_procesamiento_datos
+    container_name: python_kaggle_runner
+    depends_on:
+      - influxdb
+    volumes:
+      - ./subida_y_procesamiento_datos/contenido:/app/contenido
+      - ./kaggle.json:/root/.kaggle/kaggle.json:ro
+    environment:
+      - KAGGLE_CONFIG_DIR=/root/.kaggle
+    working_dir: /app
+    command: bash -c "sleep 10 &&
+      python contenido/descargar_dataset.py && 
+      python contenido/Corrector_de_cryptosCSV.py && 
+      python contenido/Corrector_de_stocksCSV.py && 
+      python contenido/nueva_token_influx.py"
+#python contenido/subida_cryptoCSV_pandas_docker.py
   influxdb:
     image: influxdb:2.7
     container_name: influxdb
@@ -15,8 +32,7 @@ services:
       - DOCKER_INFLUXDB_INIT_ORG=Cryptobro_Together_Strong
       - DOCKER_INFLUXDB_INIT_BUCKET=livemarket
       - DOCKER_INFLUXDB_INIT_RETENTION=365d
-      - DOCKER_INFLUXDB_INIT_TOKEN=mi_token_super_seguro
-
+      - DOCKER_INFLUXDB_INIT_TOKEN=solo_para_cryptobros
 volumes:
   influxdb_data:
 

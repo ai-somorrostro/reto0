@@ -12,9 +12,16 @@ import os
 
 # In[ ]:
 
+# Ruta absoluta al directorio donde está este script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Ruta completa al CSV
+csv_path = os.path.join(script_dir, "stocks.csv")
 
 try:
-    rawdata = pd.read_csv("stocks.csv")
+    
+
+    rawdata = pd.read_csv(csv_path)
     print("Archivo 'stocks.csv' cargado exitosamente.")
 except FileNotFoundError:
     print("Error: No se encontró el archivo 'stocks.csv'.")
@@ -72,13 +79,7 @@ rawdata.fillna(0, inplace=True)
 
 # In[ ]:
 
-file_path = "stocks_unidades_corregidas.csv"
-
-# Verifica si el archivo existe
-if os.path.exists(file_path):
-    df_antiguo = pd.read_csv(file_path)
-    df_antiguo.to_csv("stocks_unidades_corregidas_old.csv", index=True)
-    
 # Este paso es para guardar el dataframe con los cambios como un CSV
-rawdata.to_csv("stocks_unidades_corregidas.csv", index=False)
+csv_path = os.path.join(script_dir, "stocks_unidades_corregidas.csv")
+rawdata.to_csv(csv_path, index=False)
 print("Archivo 'stocks_unidades_corregidas.csv' creado exitosamente.")

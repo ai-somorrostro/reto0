@@ -9,9 +9,13 @@ import datetime
 import os
 
 # In[2]:
+# Ruta absoluta al directorio donde está este script
+script_dir = os.path.dirname(os.path.abspath(__file__))
 
+# Ruta completa al CSV
+csv_path = os.path.join(script_dir, "cryptocurrency.csv")
 
-rawdata = pd.read_csv("cryptocurrency.csv")
+rawdata = pd.read_csv(csv_path)
 
 
 # In[3]:
@@ -67,27 +71,10 @@ def limpiar_dataframe(df):
 
 # In[7]:
 
-file_path = "cryptos_unidades_corregidas.csv"
+csv_path_save = os.path.join(script_dir, "cryptos_unidades_corregidas.csv")
 
-# Verifica si el archivo existe
-if os.path.exists(file_path):
-    df_antiguo = pd.read_csv(file_path)
-    df_limpio = limpiar_dataframe(rawdata)
-    df_antiguo.to_csv("cryptos_unidades_corregidas_old.csv", index=True)
-    merged = df_limpio.merge(df_antiguo, how="outer", indicator=True)
-    diff = merged[merged["_merge"] != "both"].drop(columns="_merge")
-    df_diff = diff.reset_index(drop=True)
-    df_diff.to_csv("cryptos_unidades_corregidas.csv", index=True)
-else:
-    df_limpio = limpiar_dataframe(rawdata)
-    df_limpio.to_csv("cryptos_unidades_corregidas.csv", index=True)
-
-
-
-
-
-
-
+df_limpio = limpiar_dataframe(rawdata)
+df_limpio.to_csv(csv_path_save, index=True)
 
 # In[ ]:
 

@@ -1,25 +1,46 @@
-from influxdb_client import InfluxDBClient
+from influxdb_client import InfluxDBClient, Permission, PermissionResource
 
 # Configuración
-influx_url = "http://influxdb:8086"
-admin_token = "solo_para_cryptobros"  # reemplaza con el token válido
-org = "Cryptobro_Together_Strong"
+INFLUXDB_URL    = "http://influxdb:8086"
+ADMIN_TOKEN     = "solo_para_cryptobros"
+ORG             = "Cryptobro_Together_Strong"
+BUCKET_NAME     = "livemarket"
 
-# Crear cliente
-client = InfluxDBClient(
-    url=influx_url,
-    token=admin_token,
-    org=org
-)
+def crear_token_escritura():
+    client = InfluxDBClient(
+        url=INFLUXDB_URL,
+        token=ADMIN_TOKEN,
+        org=ORG
+    )
 
-# Llamada directa a la API sin auth_settings
-response = client.api_client.call_api(
-    '/api/v2/authorizations', 'GET',
-    response_type='AuthorizationList'
-)
+    # Obtener el bucket
+    bucket = client.buckets_api().find_bucket_by_name(BUCKET_NAME)
+    if not bucket:
+        print(f"❌ No se encontró el bucket '{BUCKET_NAME}'")
+        return None
 
-# Imprimir tokens activos
-for auth in response[0].authorizations:
-    if auth.status == "active":
-        print("✅ Token activo encontrado:")
-        print(auth.token)
+    # Obtener la organización por nombre
+    orgs = client.organizations_api().find_organizations()
+    org_obj = next((o for o in orgs if o.name == ORG), None)
+    if not org_obj:
+        print(f"❌ No se encontró la organización '{ORG}'")
+        return None
+
+
+    # Crear permiso de escritura
+    write_perm = Permission(
+        action="write",
+        resource=PermissionResource(type="buckets", id=bucket.id)
+    )
+
+    # Crear token
+    auth = client.authorizations_api().create_authorization(
+        permissions=[write_perm],
+        org_id=org_obj.id
+    )
+
+    print(f"✅ Token creado: {auth.token}")
+    return auth.token
+
+if __name__ == "__main__":
+    crear_token_escritura()

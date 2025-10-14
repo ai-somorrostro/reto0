@@ -14,6 +14,7 @@
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+
 PIA/subida_y_procesamiento_datos/contenido/nodered_data/node_modules
 PIA/subida_y_procesamiento_datos/contenido/nodered_data/package.json
 PIA/subida_y_procesamiento_datos/contenido/nodered_data/settings.js

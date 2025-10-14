@@ -1,0 +1,11 @@
+site_name: Reto 0 "Here we go!"
+site_author: Clemente Rodriguez, Ibai Garcia, Aritz Basarrate.
+site_url: https://ai-somorrostro/reto0.github.io
+
+theme: kpn
+nav:
+  - Introducción: index.md
+  - Instalación: instalacion.md
+  - Ramas: ramas.md
+
+repo_url: https://github.com/ai-somorrostro/reto0.github.io

@@ -1,0 +1,143 @@
+[
+    {
+        "id": "2c2a7c5c77de9b73",
+        "type": "tab",
+        "label": "Flujo subida stocks",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "25e717f0091de8a7",
+        "type": "file in",
+        "z": "2c2a7c5c77de9b73",
+        "name": "stockscsv",
+        "filename": "/home/user/reto0_pruebas_python/Processed_CSV/stocks_unidades_corregidas.csv",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": true,
+        "x": 340,
+        "y": 160,
+        "wires": [
+            [
+                "f4dab07b27c80dd6"
+            ]
+        ]
+    },
+    {
+        "id": "a3cfa6d5f6c90e90",
+        "type": "inject",
+        "z": "2c2a7c5c77de9b73",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "25e717f0091de8a7"
+            ]
+        ]
+    },
+    {
+        "id": "f4dab07b27c80dd6",
+        "type": "csv",
+        "z": "2c2a7c5c77de9b73",
+        "name": "",
+        "spec": "rfc",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "none",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "timestamp,name,last,high,low,chg_,chg_%,vol_,time",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 570,
+        "y": 160,
+        "wires": [
+            [
+                "6c80af2e38136725"
+            ]
+        ]
+    },
+    {
+        "id": "6c80af2e38136725",
+        "type": "function",
+        "z": "2c2a7c5c77de9b73",
+        "name": "function 3",
+        "func": "const points = [];\n\nfor (const row of msg.payload) {\n    // Asegurarse de que timestamp sea válido\n    const ts = new Date(row.timestamp);\n    if (isNaN(ts)) continue;\n\n    // Crear punto Influx\n    const point = {\n        measurement: \"stocks\",\n        tags: {\n            name: row.name.replace(/&amp;/g, '&') // decodificar si hace falta\n        },\n        fields: {\n            last: parseFloat(row.last),\n            high: parseFloat(row.high),\n            low: parseFloat(row.low),\n            chg_: parseFloat(row.chg_),\n            chg_percent: parseFloat(row[\"chg_%\"]),\n            volume: Math.round(parseFloat(row.vol_))\n        },\n        timestamp: ts\n    };\n\n    points.push(point);\n}\n\nmsg.payload = points;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 160,
+        "wires": [
+            [
+                "d892490eb71488ce"
+            ]
+        ]
+    },
+    {
+        "id": "d892490eb71488ce",
+        "type": "influxdb batch",
+        "z": "2c2a7c5c77de9b73",
+        "influxdb": "a072bc1b77179a65",
+        "precision": "",
+        "retentionPolicy": "",
+        "name": "subida a influx batch",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "somorrostro",
+        "bucket": "reto0-bucket",
+        "x": 1140,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "a072bc1b77179a65",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": 8086,
+        "protocol": "http",
+        "database": "database",
+        "name": "localhost",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://localhost:8086",
+        "timeout": "20000",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "a24db86f504f7092",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-influxdb": "0.7.0"
+        }
+    }
+]

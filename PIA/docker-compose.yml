@@ -5,19 +5,15 @@ services:
       context: ./subida_y_procesamiento_datos
     container_name: python_kaggle_runner
     depends_on:
-      - grafana
+      - influxdb
     volumes:
       - ./subida_y_procesamiento_datos/contenido:/app/contenido
       - ./kaggle.json:/root/.kaggle/kaggle.json:ro
     environment:
       - KAGGLE_CONFIG_DIR=/root/.kaggle
     working_dir: /app
-    command: bash -c "
-      python contenido/descargar_dataset.py && 
-      python contenido/Corrector_de_cryptosCSV.py && 
-      python contenido/Corrector_de_stocksCSV.py && 
-      python contenido/subida_cryptoCSV_pandas_docker.py"
-#
+    command: python contenido/actualizador.py
+
   influxdb:
     image: influxdb:2.7
     container_name: influxdb
@@ -38,11 +34,12 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     depends_on:
-      - influxdb
+      - python-kaggle
     ports:
       - "3000:3000"
     volumes:
-      - ./subida_y_procesamiento_datos/contenido:/app/contenido
+      - ./subida_y_procesamiento_datos/contenido/grafana_dashboard:/etc/grafana/provisioning/dashboards
+      - ./subida_y_procesamiento_datos/contenido/grafana_datasource:/etc/grafana/provisioning/datasources
       - grafana-storage:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_USER=admin
@@ -52,18 +49,14 @@ services:
   nodered:
     image: nodered/node-red:latest
     container_name: nodered
+    build:
+      context: ./subida_y_procesamiento_datos/contenido/nodered_data
     depends_on:
       - python-kaggle
     ports:
       - "1880:1880"
     volumes:
-      - ./subida_y_procesamiento_datos/contenido:/data
-    command: bash -c "
-      apt-get update && apt-get install -y curl gnupg && 
-      curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-      apt-get install -y nodejs && 
-      node -v && npm -v &&
-      npm install node-red-contrib-influxdb"
+      - ./subida_y_procesamiento_datos/contenido/nodered_data:/data
 
 volumes:
   influxdb_data:

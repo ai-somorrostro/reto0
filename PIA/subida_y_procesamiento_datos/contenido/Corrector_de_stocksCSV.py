@@ -80,6 +80,6 @@ rawdata.fillna(0, inplace=True)
 # In[ ]:
 
 # Este paso es para guardar el dataframe con los cambios como un CSV
-csv_path = os.path.join(script_dir, "stocks_unidades_corregidas.csv")
+csv_path = os.path.join(script_dir, "nodered_data/stocks_unidades_corregidas.csv")
 rawdata.to_csv(csv_path, index=False)
 print("Archivo 'stocks_unidades_corregidas.csv' creado exitosamente.")

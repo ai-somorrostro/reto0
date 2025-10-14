@@ -15,4 +15,15 @@ pyvenv.cfg
 .venv
 pip-selfcheck.json
 
+PIA/subida_y_procesamiento_datos/contenido/nodered_data/node_modules
+PIA/subida_y_procesamiento_datos/contenido/nodered_data/package.json
+PIA/subida_y_procesamiento_datos/contenido/nodered_data/settings.js
+PIA/subida_y_procesamiento_datos/contenido/nodered_data/.config.nodes.json
+PIA/subida_y_procesamiento_datos/contenido/nodered_data/.config.nodes.json.backup
+PIA/subida_y_procesamiento_datos/contenido/nodered_data/.config.runtime.json
+PIA/subida_y_procesamiento_datos/contenido/nodered_data/.config.runtime.json.backup
+PIA/subida_y_procesamiento_datos/contenido/nodered_data/.config.users.json
+PIA/subida_y_procesamiento_datos/contenido/nodered_data/.config.users.json.backup
+PIA/subida_y_procesamiento_datos/contenido/nodered_data/.flows.json.backup
+PIA/subida_y_procesamiento_datos/contenido/nodered_data/flows_cred.json
 # End of https://www.toptal.com/developers/gitignore/api/venv

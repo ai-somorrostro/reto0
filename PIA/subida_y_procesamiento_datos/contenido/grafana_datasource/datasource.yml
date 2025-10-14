@@ -1,0 +1,17 @@
+apiVersion: 1
+
+datasources:
+  - name: InfluxDB
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    database: livemarket
+    user: cryptobro
+    password: criptobro12345
+    isDefault: true
+    jsonData:
+      version: Flux
+      organization: Cryptobro_Together_Strong
+      defaultBucket: livemarket
+    secureJsonData:
+      token: solo_para_cryptobros

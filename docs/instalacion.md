@@ -1,5 +1,5 @@
 # Guia de Instalación del proyecto
-### Este repositorio contiene las imagenes de Grafana, InfluxDB y Node-red, si las tienes instaladas en tu maquina linux, desactivalas.
+ - Este repositorio contiene las imagenes de Grafana, InfluxDB y Node-red, si las tienes instaladas en tu maquina linux, desactivalas.
 ## Compatibilidad
  - Linux
 
@@ -19,13 +19,13 @@
     ![terminal_2](recursos_readme/terminal_2.png)
 
  - Si queremos desentendernos de lo que hace por detras le podemos añadir esto al comando:
-    ```bash
-    docker compose up --build -d
-    ```
+
+    ![terminal_4](recursos_readme/terminal_4.png)
+
  - Este comando solo lo ejecutaremos la vez que nos descarguemos el proyecto, a partir de ahi tenemos las imagenes descargadas, si repetimos el mismo comando de arriba nos descargara otra vez las imagenes, por eso en futuras instancias ejecutamos el siguiente comando:
-    ```bash
-    docker compose up -d
-    ```
+
+    ![terminal_3](recursos_readme/terminal_3.png)
+  
 ## Paso 4
  - Despues de que se descargue y se despliegue todo podemos entrar dentro de la maquina y entrar a traves de un explorador web en los distintos servicios. Los usuarios y contraseñas de los distintos servicios son los siguientes:
      - Grafana
@@ -37,6 +37,5 @@
 
 ## Paso 5
  - Una vez que hayamos hecho todo lo que queramos con los servicios, para apagarlos insertamos el siguiente comando:
-    ```bash
-    docker compose down
-    ```
+
+    ![terminal_5](recursos_readme/terminal_5.png)

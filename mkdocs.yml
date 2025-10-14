@@ -1,6 +1,6 @@
-site_name: Reto 0 "Here we go!"
+site_name: Reto 0 "Here we go!" -  Equipo 5 > Clemente Rodriguez, Ibai Garcia, Aritz Basarrate.
 site_author: Clemente Rodriguez, Ibai Garcia, Aritz Basarrate.
-site_url: https://ai-somorrostro/reto0.github.io
+site_url: https://ai-somorrostro.github.io/reto0
 
 theme: kpn
 nav:
@@ -8,4 +8,4 @@ nav:
   - Instalación: instalacion.md
   - Ramas: ramas.md
 
-repo_url: https://github.com/ai-somorrostro/reto0.github.io
+repo_url: https://github.com/ai-somorrostro/reto0

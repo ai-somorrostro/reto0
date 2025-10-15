@@ -8,7 +8,7 @@
     The page_title contains the title for a page as shown in the navigation.
     Site name contains the name as defined in the mkdocs.yml
   -->
-  <title>Introducción - Reto 0 "Here we go!" -  Equipo 5 > Clemente Rodriguez, Ibai Garcia, Aritz Basarrate.</title>
+  <title>Instalación - Reto 0 "Here we go!" -  Equipo 5 > Clemente Rodriguez, Ibai Garcia, Aritz Basarrate.</title>
 
   <!-- Page description -->
   
@@ -154,29 +154,7 @@
 
 <li>
   <a href="." class="side-bar__link side-bar__link--active">
-    Introducción
-  </a>
-</li>
-
-        
-          <!--
-
--->
-
-<li>
-  <a href="instalacion/" class="side-bar__link ">
     Instalación
-  </a>
-</li>
-
-        
-          <!--
-
--->
-
-<li>
-  <a href="ramas/" class="side-bar__link ">
-    Ramas
   </a>
 </li>
 
@@ -187,7 +165,7 @@
     <!-- MAIN BLOCK -->
     <main class="app-layout__main main">
       <div class="app-layout__title-bar title-bar">
-        <div class="title-bar__title">Introducción</div>
+        <div class="title-bar__title">Instalación</div>
       </div>
       
       <div class="sidebar--secondary hidden-s hidden-xs">
@@ -195,7 +173,27 @@
         <ul>
         
           
-            <li><a class="a" href="#repo-del-proyecto">Repo del proyecto</a></li>
+            
+                <li><a class="a" href="#repo-del-proyecto">Repo del proyecto</a></li>
+                
+            
+                <li><a class="a" href="#compatibilidad">Compatibilidad</a></li>
+                
+            
+                <li><a class="a" href="#paso-1">Paso 1</a></li>
+                
+            
+                <li><a class="a" href="#paso-2">Paso 2</a></li>
+                
+            
+                <li><a class="a" href="#paso-3">Paso 3</a></li>
+                
+            
+                <li><a class="a" href="#paso-4">Paso 4</a></li>
+                
+            
+                <li><a class="a" href="#paso-5">Paso 5</a></li>
+                
             
           
         
@@ -208,9 +206,67 @@
             <div class="card__body">
 
               
-              <h2 id="repo-del-proyecto">Repo del proyecto</h2>
+              <h1 id="guia-de-instalacion-del-proyecto">Guia de Instalación del proyecto</h1>
+<h2 id="repo-del-proyecto">Repo del proyecto</h2>
 <ul>
 <li><strong><a href="https://github.com/ai-somorrostro/reto0">GitHub</a></strong></li>
+<li>Este repositorio contiene las imagenes de Grafana, InfluxDB y Node-red, si las tienes instaladas en tu maquina linux, desactivalas.</li>
+</ul>
+<h2 id="compatibilidad">Compatibilidad</h2>
+<ul>
+<li>Linux</li>
+</ul>
+<h2 id="paso-1">Paso 1</h2>
+<ul>
+<li>
+<p>Nos descargamos el proyecto siguiendo la guia oficial de <a href="https://url-del-enlace.com">Github</a>, nos tiene que quedar tal que así:</p>
+<p><img alt="Arbol proyecto" src="recursos_readme/tree.png" /></p>
+</li>
+</ul>
+<h2 id="paso-2">Paso 2</h2>
+<ul>
+<li>
+<p>En la terminal (ya sea en la propia maquina o atraves de ssh) nos desplazamos a la carpeta PIA.</p>
+<p><img alt="terminal_1" src="recursos_readme/terminal_1.png" /></p>
+</li>
+</ul>
+<h2 id="paso-3">Paso 3</h2>
+<ul>
+<li>
+<p>Despues, en esa misma terminal ejecutamos el siguiente comando, veremos como se empieza a descargar las imagenes y dependencias de todo lo que tiene que usar, tarda un poco:</p>
+<p><img alt="terminal_2" src="recursos_readme/terminal_2.png" /></p>
+</li>
+<li>
+<p>Si queremos desentendernos de lo que hace por detras le podemos añadir esto al comando:</p>
+<p><img alt="terminal_4" src="recursos_readme/terminal_4.png" /></p>
+</li>
+<li>
+<p>Este comando solo lo ejecutaremos la vez que nos descarguemos el proyecto, a partir de ahi tenemos las imagenes descargadas, si repetimos el mismo comando de arriba nos descargara otra vez las imagenes, por eso en futuras instancias ejecutamos el siguiente comando:</p>
+<p><img alt="terminal_3" src="recursos_readme/terminal_3.png" /></p>
+</li>
+</ul>
+<h2 id="paso-4">Paso 4</h2>
+<ul>
+<li>Despues de que se descargue y se despliegue todo podemos entrar dentro de la maquina y entrar a traves de un explorador web en los distintos servicios. Los usuarios y contraseñas de los distintos servicios son los siguientes:<ul>
+<li>Grafana<ul>
+<li>usuario: admin</li>
+<li>contraseña: admin</li>
+</ul>
+</li>
+<li>Influxdb<ul>
+<li>usuario: cryptobro</li>
+<li>contraseña: criptobro12345</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="paso-5">Paso 5</h2>
+<ul>
+<li>
+<p>Una vez que hayamos hecho todo lo que queramos con los servicios, para apagarlos insertamos el siguiente comando:</p>
+<p><img alt="terminal_5" src="recursos_readme/terminal_5.png" /></p>
+</li>
 </ul>
               
             </div>
@@ -223,26 +279,6 @@
     <footer class="footer">
       <div class="footer__body">
         
-        <div class="row">
-          <div class="col col--s-4 col--m-3 col--l-2">
-          </div>
-          <div class="col col--s-4 col--m space-between">
-            
-              &#8592; Previous Page
-            
-            
-            
-              <a class="footer__link padding-top-0 navigation-next"
-                href="instalacion/"
-                title="Instalación"/>
-                Next Page &#8594;
-              </a>
-            
-          </div>
-          <div class="col col--s-4 col--m-3 ">
-          </div>
-        </div>
-        
       </div>
     </footer>
   </div>
@@ -250,7 +286,7 @@
 
   <!--
   MkDocs version      : 1.6.1
-  Docs Build Date UTC : 2025-10-14 21:52:52.399448+00:00
+  Docs Build Date UTC : 2025-10-15 08:04:45.513147+00:00
   -->
 
   <!--

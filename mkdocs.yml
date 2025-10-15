@@ -4,8 +4,6 @@ site_url: https://ai-somorrostro.github.io/reto0
 
 theme: kpn
 nav:
-  - Introducción: index.md
-  - Instalación: instalacion.md
-  - Ramas: ramas.md
+  - Instalación: index.md
 
 repo_url: https://github.com/ai-somorrostro/reto0

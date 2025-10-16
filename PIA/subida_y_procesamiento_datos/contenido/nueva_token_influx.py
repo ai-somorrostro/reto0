@@ -33,8 +33,15 @@ def crear_token_escritura():
         resource=PermissionResource(type="buckets", id=bucket.id)
     )
 
-    # Crear token
-    auth = client.authorizations_api().create_authorization(
+    # Buscar si ya existe un token con ese permiso
+    existing_auths = client.authorizations_api().find_authorizations(org_id=org_obj.id)
+    for auth in existing_auths:
+        if write_perm in auth.permissions:
+            print(f"🔁 Ya existe un token con permiso de escritura: {auth.token}")
+            return auth.token
+
+    # Si no existe, crear uno nuevo
+    new_auth = client.authorizations_api().create_authorization(
         permissions=[write_perm],
         org_id=org_obj.id
     )

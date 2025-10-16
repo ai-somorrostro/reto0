@@ -1,14 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
 import pandas as pd
 import numpy as np
 import datetime
 import os
 
-# In[2]:
 # Ruta absoluta al directorio donde está este script
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -17,21 +14,9 @@ csv_path = os.path.join(script_dir, "cryptocurrency.csv")
 
 rawdata = pd.read_csv(csv_path)
 
-
-# In[3]:
-
-
 rawdata.set_index(rawdata['timestamp'], inplace = True)
 
-
-# In[4]:
-
-
 del rawdata['timestamp']
-
-
-# In[5]:
-
 
 def convertir_valor(valor):
     if pd.isna(valor):
@@ -68,16 +53,12 @@ def limpiar_dataframe(df):
             pass
     return df_limpio
 
-
-# In[7]:
-
 csv_path_save = os.path.join(script_dir, "cryptos_unidades_corregidas.csv")
+
+# Si el archivo corregido ya existe, renombrarlo como "_old"
+if os.path.exists(csv_path_save):
+    csv_path_old = os.path.join(script_dir, "cryptos_unidades_corregidas_old.csv")
+    os.rename(csv_path_save, csv_path_old)
 
 df_limpio = limpiar_dataframe(rawdata)
 df_limpio.to_csv(csv_path_save, index=True)
-
-# In[ ]:
-
-
-
-

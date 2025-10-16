@@ -47,7 +47,7 @@ def crear_token_escritura():
     )
 
     print(f"✅ Token creado: {new_auth.token}")
-    return auth.token
+    return new_auth.token
 
 if __name__ == "__main__":
     crear_token_escritura()

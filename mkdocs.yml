@@ -4,6 +4,11 @@ site_url: https://ai-somorrostro.github.io/reto0
 
 theme: kpn
 nav:
-  - Instalación: index.md
+  - Introducción: index.md
+  - BDA: bda.md
+  - PIA: pia.md
+  - SBD: sbd.md
+  - MIA: mia.md
+  - SAA: saa.md
 
 repo_url: https://github.com/ai-somorrostro/reto0

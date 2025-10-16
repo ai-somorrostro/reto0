@@ -46,7 +46,7 @@ def crear_token_escritura():
         org_id=org_obj.id
     )
 
-    print(f"✅ Token creado: {auth.token}")
+    print(f"✅ Token creado: {new_auth.token}")
     return auth.token
 
 if __name__ == "__main__":

@@ -4,6 +4,8 @@
 - Ibai Garcia
 - Aritz Basarrate
 
+## **[Landing page](https://ai-somorrostro.github.io/reto0)**
+
 # Guia de Instalación del proyecto
 ### Este repositorio contiene las imagenes de Grafana, InfluxDB y Node-red, si las tienes instaladas en tu maquina linux, desactivalas.
 ## Compatibilidad

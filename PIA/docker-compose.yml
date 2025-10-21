@@ -7,7 +7,7 @@ services:
     depends_on:
       - influxdb
     volumes:
-      - ./subida_y_procesamiento_datos/contenido:/app/contenido
+      - ./subida_y_procesamiento_datos/src:/app/contenido
       - ./kaggle.json:/root/.kaggle/kaggle.json:ro
     environment:
       - KAGGLE_CONFIG_DIR=/root/.kaggle
@@ -38,8 +38,8 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./subida_y_procesamiento_datos/contenido/grafana_dashboard:/etc/grafana/provisioning/dashboards
-      - ./subida_y_procesamiento_datos/contenido/grafana_datasource:/etc/grafana/provisioning/datasources
+      - ./config/grafana_dashboard:/etc/grafana/provisioning/dashboards
+      - ./config/grafana_datasource:/etc/grafana/provisioning/datasources
       - grafana-storage:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_USER=${GF_SECURITY_ADMIN_USER}
@@ -49,13 +49,13 @@ services:
   nodered:
     container_name: nodered
     build:
-      context: ./subida_y_procesamiento_datos/contenido/nodered_data
+      context: ./config/nodered_data
     depends_on:
       - python-kaggle
     ports:
       - "1880:1880"
     volumes:
-      - ./subida_y_procesamiento_datos/contenido/nodered_data:/data
+      - ./config/nodered_data:/data
 
 volumes:
   influxdb_data:

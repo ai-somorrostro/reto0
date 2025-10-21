@@ -9,10 +9,10 @@
 **Descripción:**  
 Hemos obtenido dos ficheros en formato CSV:
 
-![tabla_stocks](img/bda_tabla_stocks.png)
+![tabla_stocks](img/sbd_tabla_stocks.png)
 stocks.csv: Contiene datos de las principales acciones del mercado estadounidense.
 
-![tabla_cryptos](img/bda_tabla_cryptos.png)
+![tabla_cryptos](img/sbd_tabla_cryptos.png)
 cryptomonedas.csv: Contiene datos de los activos digitales más relevantes.
 
 ### Tarea 2: Creación de la BBDD

@@ -223,13 +223,105 @@
         <div class="title-bar__title">BDA</div>
       </div>
       
+      <div class="sidebar--secondary hidden-s hidden-xs">
+        <h4>Table of contents</h4>
+        <ul>
+        
+          
+            
+                <li><a class="a" href="#1-manipulacion-y-analisis-de-datos">1. Manipulación y Análisis de Datos</a></li>
+                
+                    <li class="child-li"><a class="a child" href="#tarea-1-cargar-conjuntos-de-datos-y-aplicar-transformaciones">Tarea 1: Cargar conjuntos de datos y aplicar transformaciones</a></li>
+                
+                    <li class="child-li"><a class="a child" href="#tarea-2-configurar-flujos-en-node-red">Tarea 2: Configurar flujos en Node-RED</a></li>
+                
+                    <li class="child-li"><a class="a child" href="#tarea-3-subida-de-datos-desde-pandas">Tarea 3: Subida de datos desde Pandas</a></li>
+                
+            
+                <li><a class="a" href="#2-datos-en-influxdb">2. Datos en InfluxDB</a></li>
+                
+                    <li class="child-li"><a class="a child" href="#tarea-1-stockscsv">Tarea 1: stocks.csv</a></li>
+                
+                    <li class="child-li"><a class="a child" href="#tarea-2-cryptocurrencycsv">Tarea 2: cryptocurrency.csv</a></li>
+                
+                    <li class="child-li"><a class="a child" href="#tarea-3-generacion-de-tokens-de-lectura-y-escritura">Tarea 3: Generación de tokens de lectura y escritura</a></li>
+                
+                    <li class="child-li"><a class="a child" href="#tarea-3-uso-de-tags-para-optimizacion">Tarea 3: Uso de tags para optimización</a></li>
+                
+            
+                <li><a class="a" href="#2-visualizacion-en-grafana">2. Visualización en Grafana</a></li>
+                
+            
+          
+        
+        </ul>
+      </div>
+      
       <div class="container content-block">
         <div class="kpn-style">
           <div class="card">
             <div class="card__body">
 
               
-              
+              <h1 id="bda-big-data-aplicado">BDA - Big Data &amp; Aplicado</h1>
+<h2 id="1-manipulacion-y-analisis-de-datos">1. Manipulación y Análisis de Datos</h2>
+<h3 id="tarea-1-cargar-conjuntos-de-datos-y-aplicar-transformaciones">Tarea 1: Cargar conjuntos de datos y aplicar transformaciones</h3>
+<p><strong>Descripción:</strong><br />
+En primer lugar, accedimos a una página fiable que nos proporcionaba datos sobre el mercado financiero, nos descargamos los ficheros (stocks.csv y cryptocurrency.csv) y realizamos la limpieza de los ficheros para su corrercta subida de datos a influxDB. La primera subida fué a través de node-RED y la segunda a través de pandas.</p>
+<p><strong>Herramientas utilizadas:</strong><br />
+- Node-RED<br />
+- Python (pandas)<br />
+- InfluxDB
+- Grafana  </p>
+<hr />
+<h3 id="tarea-2-configurar-flujos-en-node-red">Tarea 2: Configurar flujos en Node-RED</h3>
+<p><strong>Descripción:</strong><br />
+El primer archivo lo cargamos a través de Node-RED. Este flujo realiza la lectura de un archivo CSV con datos de acciones, los procesa y los envía a una base de datos <strong>InfluxDB</strong>.</p>
+<ul>
+<li><strong>timestamp:</strong> Inicia el flujo automáticamente.  </li>
+<li><strong>stocks.csv:</strong> Lee el archivo CSV con los datos bursátiles.  </li>
+<li><strong>csv:</strong> Convierte el contenido del CSV en objetos JSON.  </li>
+<li><strong>function 3:</strong> Transforma los datos en puntos para InfluxDB.  </li>
+<li><strong>subida a influx batch:</strong> Envía los puntos a la base de datos InfluxDB.  </li>
+</ul>
+<p><strong>Resultados / Comprobaciones:</strong><br />
+<img alt="flujo_stocks" src="../img/bda_flujo_stocks.png" /></p>
+<h3 id="tarea-3-subida-de-datos-desde-pandas">Tarea 3: Subida de datos desde Pandas</h3>
+<p><strong>Descripción:</strong> 
+El csv de las criptomonedas lo cargamos a través de pandas. Primero, nos aseguramos de que la limpieza de archivo esté bien realizada y después subimos los datos a influxDB. Teniendo en cuenta que tiene que coincidir el bucket de InfluxDB y el creado en Pandas. Además de crear el measurement y de clasificar las criptomonedas por el tag 'name'.</p>
+<hr />
+<h2 id="2-datos-en-influxdb">2. Datos en InfluxDB</h2>
+<h3 id="tarea-1-stockscsv">Tarea 1: stocks.csv</h3>
+<p><strong>Configuración:</strong><br />
+- Bucket: livemarket 
+- Measurement: stocks 
+- Fields: last, high, low, chg_, chg_percent, volume.
+- Tags: name </p>
+<p><strong>Resultado:</strong><br />
+<img alt="bucket_stocks" src="../img/bda_bucket_stocks.png" /></p>
+<h3 id="tarea-2-cryptocurrencycsv">Tarea 2: cryptocurrency.csv</h3>
+<p><strong>Configuración:</strong><br />
+- Bucket: livemarket
+- Measurement: cryptos 
+- Fields: symbol,price_usd,vol_24h,total_vol,chg_24h,chg_7d,market_cap 
+- Tags: name</p>
+<p><strong>Resultado:</strong><br />
+<img alt="bucket_cryptos" src="../img/bda_bucket_cryptos.png" /></p>
+<hr />
+<h3 id="tarea-3-generacion-de-tokens-de-lectura-y-escritura">Tarea 3: Generación de tokens de lectura y escritura</h3>
+<p><strong>Descripción:</strong><br />
+Hicimos Tokens de lectura para grafana, ya que es el que muestra los datos, y Tokens de escritura para Pandas y Node-RED, que son los que realizan las subidas de datos.</p>
+<h3 id="tarea-3-uso-de-tags-para-optimizacion">Tarea 3: Uso de tags para optimización</h3>
+<p><strong>Descripción:</strong><br />
+En nuestro caso el tag que utilizamos fué para clasificar las distintas criptomonedas y empresas de las acciones por su nomnbre 'name'. Esto nos permitía tener una mejor organización de los datos para luego poder visualizarlos en grafana.</p>
+<h2 id="2-visualizacion-en-grafana">2. Visualización en Grafana</h2>
+<p>Para poder realizar una investigación precisa y así anticiparnos a los cambios recurrentes que sufren las acciones y las criptomonedas, la mejor manera es poder visualizar los datos a través de gráficos. Muestran la evolución del precio en el tiempo y distintas comparaciones con las que nos permiten hacer todo esto.</p>
+<p><strong>Gráficos stocks:</strong><br />
+<img alt="gráficos_stocks" src="../img/bda_gr%C3%A1ficos_stocks.png" /></p>
+<hr />
+<p><strong>Gráficos cryptos:</strong><br />
+<img alt="gráficos_cryptos" src="../img/bda_gr%C3%A1ficos_cryptos.png" /></p>
+<hr />
               
             </div>
           </div>
@@ -272,7 +364,7 @@
 
   <!--
   MkDocs version      : 1.6.1
-  Docs Build Date UTC : 2025-10-16 10:36:37.979876+00:00
+  Docs Build Date UTC : 2025-10-21 08:34:35.753787+00:00
   -->
 
   <!--

@@ -223,13 +223,148 @@
         <div class="title-bar__title">PIA</div>
       </div>
       
+      <div class="sidebar--secondary hidden-s hidden-xs">
+        <h4>Table of contents</h4>
+        <ul>
+        
+          
+            
+                <li><a class="a" href="#productos-a-entregar">Productos a entregar</a></li>
+                
+            
+                <li><a class="a" href="#productos-entregados">Productos entregados</a></li>
+                
+            
+                <li><a class="a" href="#tareas-de-programacion-de-ia">Tareas de Programación de IA</a></li>
+                
+                    <li class="child-li"><a class="a child" href="#1-creacion-de-repositorios-del-reto">1️. Creación de repositorios del reto</a></li>
+                
+                    <li class="child-li"><a class="a child" href="#2-scripts-de-generacion-y-automatizacion-de-despliegues">2️. Scripts de generación y automatización de despliegues</a></li>
+                
+            
+          
+        
+        </ul>
+      </div>
+      
       <div class="container content-block">
         <div class="kpn-style">
           <div class="card">
             <div class="card__body">
 
               
-              
+              <h1 id="pia-programacion-de-inteligencia-artificial">PIA - Programación de Inteligencia Artificial</h1>
+<h2 id="productos-a-entregar">Productos a entregar</h2>
+<ul>
+<li>Contenedor para adquisición de datos  </li>
+<li>Contenedor para creación, configuración y carga de datos en la BBDD relacional  </li>
+<li>Contenedor para creación, configuración y carga de datos en la BBDD no relacional  </li>
+</ul>
+<h2 id="productos-entregados">Productos entregados</h2>
+<ul>
+<li>Contenedor para adquisición de datos y subida de datos (Python + Kaggle).</li>
+<li>Contenedor alternativo para subida de datos (Node-red).</li>
+<li>Contenedor para creación, configuración y carga de datos en la BBDD relacional (Grafana).</li>
+<li>Contenedor para creación, configuración y carga de datos en la BBDD no relacional (InfluxDB).</li>
+</ul>
+<h2 id="tareas-de-programacion-de-ia">Tareas de Programación de IA</h2>
+<h3 id="1-creacion-de-repositorios-del-reto">1️. Creación de repositorios del reto</h3>
+<p><strong>Descripción:</strong><br />
+Para este proyecto se ha creado un solo repositorio y varias ramas, 1 por cada apartado.</p>
+<p><strong>Herramientas utilizadas:</strong><br />
+- GitHub
+- DockerHub
+- KaggleHub
+- VirtualBox
+- Python
+- Node-Red
+- Grafana
+- InfluxDB</p>
+<p><strong>Resultado:</strong><br />
+Rama Principal:
+<img alt="main" src="../img/pia_rama_main.png" /></p>
+<p>Ramas creadas:
+<img alt="otras" src="../img/pia_ramas.png" /></p>
+<h3 id="2-scripts-de-generacion-y-automatizacion-de-despliegues">2️. Scripts de generación y automatización de despliegues</h3>
+<p><strong>Descripción:</strong><br />
+- Script de Python inicial que llama al resto de scripts la primera vez y cada 10 minutos.
+         - Script de Python que se descarga de Kagglehub un dataset, lo descomprime y borra el .zip.
+         - 2 Scripts de Python que leen los CSVs y corrijen las columnas a sus debidas unidades.
+         - Script de Python que le pide a influx que cree una API token nueva de escritura.
+         - Script de Python que utiliza el API token para subir los datos de un CSV a influx.</p>
+<p><strong>Lenguajes utilizados:</strong><br />
+- Python
+- Bash  </p>
+<p><strong>Docker Compose:</strong>
+El docker compose sigue estos pasos:
+1. Inicia Influx.
+2. Inicia Python-Kaggle y ejecuta todos los scripts en el orden anteriormente especificado.
+3. Inicia Grafana.
+4. Inicia Node-red.</p>
+<pre><code>services:
+  python-kaggle:
+    build:
+      context: ./subida_y_procesamiento_datos
+    container_name: python_kaggle_runner
+    depends_on:
+      - influxdb
+    volumes:
+      - ./subida_y_procesamiento_datos/contenido:/app/contenido
+      - ./kaggle.json:/root/.kaggle/kaggle.json:ro
+    environment:
+      - KAGGLE_CONFIG_DIR=/root/.kaggle
+    working_dir: /app
+    command: python contenido/actualizador.py
+
+  influxdb:
+    image: influxdb:2.7
+    container_name: influxdb
+    ports:
+      - &quot;8086:8086&quot;
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=cryptobro
+      - DOCKER_INFLUXDB_INIT_PASSWORD=criptobro12345
+      - DOCKER_INFLUXDB_INIT_ORG=Cryptobro_Together_Strong
+      - DOCKER_INFLUXDB_INIT_BUCKET=livemarket
+      - DOCKER_INFLUXDB_INIT_RETENTION=365d
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=solo_para_cryptobros
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    depends_on:
+      - python-kaggle
+    ports:
+      - &quot;3000:3000&quot;
+    volumes:
+      - ./subida_y_procesamiento_datos/contenido/grafana_dashboard:/etc/grafana/provisioning/dashboards
+      - ./subida_y_procesamiento_datos/contenido/grafana_datasource:/etc/grafana/provisioning/datasources
+      - grafana-storage:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    restart: unless-stopped
+
+  nodered:
+    image: nodered/node-red:latest
+    container_name: nodered
+    build:
+      context: ./subida_y_procesamiento_datos/contenido/nodered_data
+    depends_on:
+      - python-kaggle
+    ports:
+      - &quot;1880:1880&quot;
+    volumes:
+      - ./subida_y_procesamiento_datos/contenido/nodered_data:/data
+
+volumes:
+  influxdb_data:
+  grafana-storage:
+  nodered_data:
+</code></pre>
               
             </div>
           </div>
@@ -272,7 +407,7 @@
 
   <!--
   MkDocs version      : 1.6.1
-  Docs Build Date UTC : 2025-10-16 10:36:37.980624+00:00
+  Docs Build Date UTC : 2025-10-21 08:34:35.755887+00:00
   -->
 
   <!--

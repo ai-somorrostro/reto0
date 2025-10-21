@@ -12,7 +12,7 @@
         "type": "file in",
         "z": "2c2a7c5c77de9b73",
         "name": "stockscsv",
-        "filename": "/data/stocks_unidades_corregidas.csv",
+        "filename": "/data/flows/stocks_unidades_corregidas.csv",
         "filenameType": "str",
         "format": "utf8",
         "chunk": false,

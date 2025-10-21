@@ -5,7 +5,7 @@ services:
       context: ./subida_y_procesamiento_datos
     container_name: python_kaggle_runner
     depends_on:
-      - influxdb
+      - nodered
     volumes:
       - ./subida_y_procesamiento_datos/src:/app/contenido
       - ./kaggle.json:/root/.kaggle/kaggle.json:ro
@@ -34,7 +34,7 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     depends_on:
-      - python-kaggle
+      - influxdb
     ports:
       - "3000:3000"
     volumes:
@@ -51,11 +51,12 @@ services:
     build:
       context: ./config/nodered_data
     depends_on:
-      - python-kaggle
+      - grafana
     ports:
       - "1880:1880"
     volumes:
       - ./config/nodered_data:/data
+      - ./subida_y_procesamiento_datos/src:/data/flows
 
 volumes:
   influxdb_data:

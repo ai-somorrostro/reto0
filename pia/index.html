@@ -271,15 +271,17 @@
 <h3 id="1-creacion-de-repositorios-del-reto">1️. Creación de repositorios del reto</h3>
 <p><strong>Descripción:</strong><br />
 Para este proyecto se ha creado un solo repositorio y varias ramas, 1 por cada apartado.</p>
-<p><strong>Herramientas utilizadas:</strong><br />
-- GitHub
-- DockerHub
-- KaggleHub
-- VirtualBox
-- Python
-- Node-Red
-- Grafana
-- InfluxDB</p>
+<p><strong>Herramientas utilizadas:</strong> </p>
+<ul>
+<li>GitHub</li>
+<li>DockerHub</li>
+<li>KaggleHub</li>
+<li>VirtualBox</li>
+<li>Python</li>
+<li>Node-Red</li>
+<li>Grafana</li>
+<li>InfluxDB</li>
+</ul>
 <p><strong>Resultado:</strong><br />
 Rama Principal:
 <img alt="main" src="../img/pia_rama_main.png" /></p>
@@ -288,19 +290,31 @@ Rama Principal:
 <h3 id="2-scripts-de-generacion-y-automatizacion-de-despliegues">2️. Scripts de generación y automatización de despliegues</h3>
 <p><strong>Descripción:</strong><br />
 - Script de Python inicial que llama al resto de scripts la primera vez y cada 10 minutos.
-         - Script de Python que se descarga de Kagglehub un dataset, lo descomprime y borra el .zip.
-         - 2 Scripts de Python que leen los CSVs y corrijen las columnas a sus debidas unidades.
-         - Script de Python que le pide a influx que cree una API token nueva de escritura.
-         - Script de Python que utiliza el API token para subir los datos de un CSV a influx.</p>
-<p><strong>Lenguajes utilizados:</strong><br />
-- Python
-- Bash  </p>
+       - Script de Python que se descarga de Kagglehub un dataset, lo descomprime y borra el .zip.
+       - 2 Scripts de Python que leen los CSVs y corrijen las columnas a sus debidas unidades.
+       - Script de Python que le pide a influx que cree una API token nueva de escritura.
+       - Script de Python que utiliza el API token para subir los datos de un CSV a influx.</p>
+<p><strong>Lenguajes utilizados:</strong>  </p>
+<ul>
+<li>Python</li>
+<li>Bash  </li>
+</ul>
 <p><strong>Docker Compose:</strong>
-El docker compose sigue estos pasos:
-1. Inicia Influx.
-2. Inicia Python-Kaggle y ejecuta todos los scripts en el orden anteriormente especificado.
-3. Inicia Grafana.
-4. Inicia Node-red.</p>
+El docker compose sigue estos pasos:</p>
+<ol>
+<li>
+<p>Inicia Influx.</p>
+</li>
+<li>
+<p>Inicia Python-Kaggle y ejecuta todos los scripts en el orden anteriormente especificado.</p>
+</li>
+<li>
+<p>Inicia Grafana.</p>
+</li>
+<li>
+<p>Inicia Node-red.</p>
+</li>
+</ol>
 <pre><code>services:
   python-kaggle:
     build:
@@ -407,7 +421,7 @@ volumes:
 
   <!--
   MkDocs version      : 1.6.1
-  Docs Build Date UTC : 2025-10-21 08:34:35.755887+00:00
+  Docs Build Date UTC : 2025-10-21 08:43:29.368749+00:00
   -->
 
   <!--

@@ -268,11 +268,13 @@
 <h3 id="tarea-1-cargar-conjuntos-de-datos-y-aplicar-transformaciones">Tarea 1: Cargar conjuntos de datos y aplicar transformaciones</h3>
 <p><strong>Descripción:</strong><br />
 En primer lugar, accedimos a una página fiable que nos proporcionaba datos sobre el mercado financiero, nos descargamos los ficheros (stocks.csv y cryptocurrency.csv) y realizamos la limpieza de los ficheros para su corrercta subida de datos a influxDB. La primera subida fué a través de node-RED y la segunda a través de pandas.</p>
-<p><strong>Herramientas utilizadas:</strong><br />
-- Node-RED<br />
-- Python (pandas)<br />
-- InfluxDB
-- Grafana  </p>
+<p><strong>Herramientas utilizadas:</strong>  </p>
+<ul>
+<li>Node-RED  </li>
+<li>Python (pandas)  </li>
+<li>InfluxDB  </li>
+<li>Grafana  </li>
+</ul>
 <hr />
 <h3 id="tarea-2-configurar-flujos-en-node-red">Tarea 2: Configurar flujos en Node-RED</h3>
 <p><strong>Descripción:</strong><br />
@@ -292,11 +294,13 @@ El csv de las criptomonedas lo cargamos a través de pandas. Primero, nos asegur
 <hr />
 <h2 id="2-datos-en-influxdb">2. Datos en InfluxDB</h2>
 <h3 id="tarea-1-stockscsv">Tarea 1: stocks.csv</h3>
-<p><strong>Configuración:</strong><br />
-- Bucket: livemarket 
-- Measurement: stocks 
-- Fields: last, high, low, chg_, chg_percent, volume.
-- Tags: name </p>
+<p><strong>Configuración:</strong>  </p>
+<ul>
+<li>Bucket: livemarket </li>
+<li>Measurement: stocks </li>
+<li>Fields: last, high, low, chg_, chg_percent, volume.</li>
+<li>Tags: name </li>
+</ul>
 <p><strong>Resultado:</strong><br />
 <img alt="bucket_stocks" src="../img/bda_bucket_stocks.png" /></p>
 <h3 id="tarea-2-cryptocurrencycsv">Tarea 2: cryptocurrency.csv</h3>
@@ -364,7 +368,7 @@ En nuestro caso el tag que utilizamos fué para clasificar las distintas criptom
 
   <!--
   MkDocs version      : 1.6.1
-  Docs Build Date UTC : 2025-10-21 08:34:35.753787+00:00
+  Docs Build Date UTC : 2025-10-21 08:43:29.366386+00:00
   -->
 
   <!--

@@ -1,4 +1,7 @@
 # SBD - Sistemas de Big Data
+**Herramientas utilizadas:** 
+ - MySQL 
+ - Python (pandas) 
 
 ## 1. Visualización de datos en SQL
 
@@ -6,88 +9,74 @@
 **Descripción:**  
 Hemos obtenido dos ficheros en formato CSV:
 
- - stocks.csv: Contiene datos de las principales acciones del mercado estadounidense.
- - cryptomonedas.csv: Contiene datos de los activos digitales más relevantes.
+![tabla_stocks](img/bda_tabla_stocks.png)
+stocks.csv: Contiene datos de las principales acciones del mercado estadounidense.
 
-**Herramientas utilizadas:**  
- - MySQL 
- - Python (pandas)  
+![tabla_cryptos](img/bda_tabla_cryptos.png)
+cryptomonedas.csv: Contiene datos de los activos digitales más relevantes.
 
 ### Tarea 2: Creación de la BBDD
 **Descripción:**  
-El primer archivo lo cargamos a través de Node-RED. Este flujo realiza la lectura de un archivo CSV con datos de acciones, los procesa y los envía a una base de datos **InfluxDB**.
+Datos: Para gestionar y consultar esta información de manera eficiente, hemos creado una base de datos relacional que hemos denominado RETO_0. La hemos creado desde la interfaz gráfica de SQL Server..
 
-- **timestamp:** Inicia el flujo automáticamente.  
-- **stocks.csv:** Lee el archivo CSV con los datos bursátiles.  
-- **csv:** Convierte el contenido del CSV en objetos JSON.  
-- **function 3:** Transforma los datos en puntos para InfluxDB.  
-- **subida a influx batch:** Envía los puntos a la base de datos InfluxDB.  
+### Tarea 3: Comprensión de los Datos Recibidos
+Una vez almacenados los datos, nuestro equipo ha realizado un análisis exploratorio para familiarizarse con la estructura y el contenido de la información.
 
-**Configuración de los flujos:**  
-*(Describe cómo se estructuraron los nodos, conexiones, etc.)*
+ - Conjunto de Datos de la Tabla stocks:
 
-**Resultados / Comprobaciones:**  
-*(Incluye capturas o resumen de los datos enviados correctamente.)*
+        Este fichero contiene el estado de diversas acciones en un momento concreto. Las columnas clave que hemos identificado son:
 
----
+        ● name (Texto): El nombre de la compañía (ej. "Amazon.com", "Apple").
 
-### Tarea 3: Integración de APIs externas en Node-RED
-**Descripción:**  
-*(Indica qué APIs se integraron y con qué propósito.)*
+        ● last (Numérico): El último precio de cotización registrado.
 
-**Configuración y conexión con InfluxDB:**  
-*(Explica cómo los datos de la API llegan a InfluxDB.)*
+        ● high/low (Numérico): El precio más alto y más bajo alcanzado en el período.
 
-**Resultados:**  
-*(Describe los datos obtenidos y su utilidad.)*
+        ● chg_ (Numérico): El cambio neto en el precio (en dólares). Es un indicador directo de la ganancia o pérdida.
 
----
+        ● chg_% (Texto): El cambio porcentual en el precio. Muy útil para comparar el rendimiento entre acciones de diferente valor.
 
-### Tarea 4: Automatización del guardado de datos
-**Descripción:**  
-*(Explica cómo automatizaste el proceso de almacenamiento en InfluxDB.)*
+        ● vol (Texto): El volumen de negociación, representado con abreviaturas (ej. '2.3M' para 2.3 millones). Indica el nivel de interés o actividad en una acción.
 
-**Herramientas y scripts utilizados:**  
-*(Menciona scripts o flujos relevantes.)*
+ - Conjunto de Datos de la Tablas cryptomonedas:
 
-**Resultado final:**  
-*(Describe cómo se logró la automatización completa.)*
+        Similar al de acciones, este conjunto nos ofrece una visión del mercado de activos digitales. Las áreas de mayor interés son:
 
----
+        ● name/symbol (Texto): El nombre completo y el "ticker" o símbolo de la criptomoneda (ej. "Bitcoin", "BTC").
 
-## 2. Gestión de Series Temporales (InfluxDB)
+        ● price_usd (Numérico): El precio en dólares estadounidenses.
 
-### Tarea 1: Creación de buckets y estructura de datos
-**Descripción:**  
-*(Detalla los buckets creados y la estructura de los datos.)*
+        ● vol_24h/total_vol (Texto): El volumen negociado en las últimas 24 horas y el volumen total.
 
-**Configuración:**  
-- Bucket:  
-- Measurement:  
-- Fields:  
-- Tags:  
+        ● chg_24h/chg_7d (Texto): El cambio porcentual en las últimas 24 horas y en los últimos 7 días. Clave para entender tendencias a corto y medio plazo.
 
-**Resultado:**  
-*(Comenta cómo se organizó la información.)*
+        ● market_cap (Texto): La capitalización de mercado, que representa el valor total de todas las monedas en circulación. Es un indicador del tamaño y la relevancia del activo.
 
----
+### Tarea 4: Planteamiento de Preguntas Clave
+Basándonos en nuestra comprensión de los datos y los objetivos del negocio, hemos formulado una serie de preguntas estratégicas. 
 
-### Tarea 2: Generación de tokens de lectura y escritura
-**Descripción:**  
-*(Explica cómo se gestionó la seguridad de acceso a los datos.)*
+Estas preguntas guiarán nuestro análisis y nos ayudarán a extraer información que pueda traducirse en acciones concretas para mejorar la rentabilidad y la toma de decisiones.
 
-**Proceso:**  
-*(Describe cómo se generaron los tokens y cómo se aplicaron.)*
+ - Preguntas para el Mercado de Acciones:
 
-**Resultado:**  
-*(Incluye detalles de protección y validación.)*
+        1. ¿Cuáles son las acciones con mejor y peor rendimiento reciente para identificar rápidamente las "estrellas" y los "problemas" de nuestra cartera?
 
----
+        2. ¿Qué acciones se encuentran dentro de un rango de precio específico que pueda ser atractivo para nuevas inversiones?
 
-### Tarea 3: Uso de tags para optimización
-**Descripción:**  
-*(Explica qué tags se usaron y por qué.)*
+        3. ¿Cómo podemos clasificar las acciones según su volatilidad para gestionar mejor el riesgo de nuestras posiciones?
 
-**Ejemplo de estructura:**  
-```text
-measurement,tag1=value1,tag2=value2 field1=...,field2=... timestamp
+        4. ¿Cuál es el sentimiento general del mercado? ¿Hay más acciones al alza o a la baja en un día determinado?
+
+        5. ¿Qué acciones están superando el rendimiento de un referente del mercado como Microsoft, para detectar líderes sectoriales?
+
+ - Preguntas para el Mercado de Criptomonedas:
+
+        1. ¿Qué criptomonedas tienen mayor volumen de negociación? Esto nos indica dónde se concentra el interés de los inversores.
+
+        2. ¿Existen activos que hayan sufrido caídas drásticas recientemente, señalando un posible riesgo o una oportunidad de compra a bajo precio?
+
+        3. ¿Las "stablecoins" (monedas estables) principales mantienen su paridad con el dólar, asegurando la estabilidad de nuestros fondos anclados a ellas?
+
+        4. ¿Qué porcentaje del mercado total dominan los gigantes como Bitcoin y Ethereum? Esto nos ayuda a entender la concentración del mercado.
+
+        5. ¿Qué criptomonedas son actualmente más caras que Ethereum, para comprender el posicionamiento de precios en la gama alta del mercado?

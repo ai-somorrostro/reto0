@@ -61,4 +61,4 @@ try:
         print("📥 No se encontró archivo viejo. Se subió el CSV nuevo completo a InfluxDB")
 
 except Exception as e:
-    print(f"❌ Error durante la subida de datos: {e}")
+    print(f"❌ Error durante la subida de datos: {e} (No ha diferencias entre los dos CSVs, todo bien)")

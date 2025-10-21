@@ -42,10 +42,10 @@ Ramas creadas:
 ### 2️. Scripts de generación y automatización de despliegues
 **Descripción:**  
 - Script de Python inicial que llama al resto de scripts la primera vez y cada 10 minutos.
-       - Script de Python que se descarga de Kagglehub un dataset, lo descomprime y borra el .zip.
-       - 2 Scripts de Python que leen los CSVs y corrijen las columnas a sus debidas unidades.
-       - Script de Python que le pide a influx que cree una API token nueva de escritura.
-       - Script de Python que utiliza el API token para subir los datos de un CSV a influx.
+     - Script de Python que se descarga de Kagglehub un dataset, lo descomprime y borra el .zip.
+     - 2 Scripts de Python que leen los CSVs y corrijen las columnas a sus debidas unidades.
+     - Script de Python que le pide a influx que cree una API token nueva de escritura.
+     - Script de Python que utiliza el API token para subir los datos de un CSV a influx.
 
 **Lenguajes utilizados:**  
 

@@ -50,6 +50,7 @@ El csv de las criptomonedas lo cargamos a través de pandas. Primero, nos asegur
 ### Tarea 2: cryptocurrency.csv
 
 **Configuración:**  
+
 - Bucket: livemarket
 - Measurement: cryptos 
 - Fields: symbol,price_usd,vol_24h,total_vol,chg_24h,chg_7d,market_cap 

@@ -288,12 +288,14 @@ Rama Principal:
 <p>Ramas creadas:
 <img alt="otras" src="../img/pia_ramas.png" /></p>
 <h3 id="2-scripts-de-generacion-y-automatizacion-de-despliegues">2️. Scripts de generación y automatización de despliegues</h3>
-<p><strong>Descripción:</strong><br />
-- Script de Python inicial que llama al resto de scripts la primera vez y cada 10 minutos.
-   1. Script de Python que se descarga de Kagglehub un dataset, lo descomprime y borra el .zip.
-   2. 2 Scripts de Python que leen los CSVs y corrijen las columnas a sus debidas unidades.
-   3. Script de Python que le pide a influx que cree una API token nueva de escritura.
-   4. Script de Python que utiliza el API token para subir los datos de un CSV a influx.</p>
+<p><strong>Descripción:</strong>  </p>
+<p>Script de Python inicial que llama al resto de scripts la primera vez y cada 10 minutos en el siguiente orden.</p>
+<ol>
+<li>Script de Python que se descarga de Kagglehub un dataset, lo descomprime y borra el .zip.</li>
+<li>2 Scripts de Python que leen los CSVs y corrijen las columnas a sus debidas unidades.</li>
+<li>Script de Python que le pide a influx que cree una API token nueva de escritura.</li>
+<li>Script de Python que utiliza el API token para subir los datos de un CSV a influx.</li>
+</ol>
 <p><strong>Lenguajes utilizados:</strong>  </p>
 <ul>
 <li>Python</li>
@@ -421,7 +423,7 @@ volumes:
 
   <!--
   MkDocs version      : 1.6.1
-  Docs Build Date UTC : 2025-10-21 08:49:42.751941+00:00
+  Docs Build Date UTC : 2025-10-21 08:51:49.354264+00:00
   -->
 
   <!--

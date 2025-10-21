@@ -47,7 +47,6 @@ services:
     restart: unless-stopped
 
   nodered:
-    image: nodered/node-red:latest
     container_name: nodered
     build:
       context: ./subida_y_procesamiento_datos/contenido/nodered_data

@@ -20,7 +20,8 @@
 **Descripción:**  
 Para este proyecto se ha creado un solo repositorio y varias ramas, 1 por cada apartado.
 
-**Herramientas utilizadas:**  
+**Herramientas utilizadas:** 
+
 - GitHub
 - DockerHub
 - KaggleHub
@@ -41,21 +42,27 @@ Ramas creadas:
 ### 2️. Scripts de generación y automatización de despliegues
 **Descripción:**  
 - Script de Python inicial que llama al resto de scripts la primera vez y cada 10 minutos.
-         - Script de Python que se descarga de Kagglehub un dataset, lo descomprime y borra el .zip.
-         - 2 Scripts de Python que leen los CSVs y corrijen las columnas a sus debidas unidades.
-         - Script de Python que le pide a influx que cree una API token nueva de escritura.
-         - Script de Python que utiliza el API token para subir los datos de un CSV a influx.
+       - Script de Python que se descarga de Kagglehub un dataset, lo descomprime y borra el .zip.
+       - 2 Scripts de Python que leen los CSVs y corrijen las columnas a sus debidas unidades.
+       - Script de Python que le pide a influx que cree una API token nueva de escritura.
+       - Script de Python que utiliza el API token para subir los datos de un CSV a influx.
 
 **Lenguajes utilizados:**  
+
 - Python
 - Bash  
 
 **Docker Compose:**
 El docker compose sigue estos pasos:
+
 1. Inicia Influx.
+
 2. Inicia Python-Kaggle y ejecuta todos los scripts en el orden anteriormente especificado.
+
 3. Inicia Grafana.
+
 4. Inicia Node-red.
+
 ```
 services:
   python-kaggle:

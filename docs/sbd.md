@@ -16,8 +16,8 @@ stocks.csv: Contiene datos de las principales acciones del mercado estadounidens
 cryptomonedas.csv: Contiene datos de los activos digitales más relevantes.
 
 ### Tarea 2: Creación de la BBDD
-**Descripción:**  
-Datos: Para gestionar y consultar esta información de manera eficiente, hemos creado una base de datos relacional que hemos denominado RETO_0. La hemos creado desde la interfaz gráfica de SQL Server..
+**Descripción:** 
+Para gestionar y consultar esta información de manera eficiente, hemos creado una base de datos relacional que hemos denominado RETO_0. La hemos creado desde la interfaz gráfica de SQL Server..
 
 ### Tarea 3: Comprensión de los Datos Recibidos
 Una vez almacenados los datos, nuestro equipo ha realizado un análisis exploratorio para familiarizarse con la estructura y el contenido de la información.

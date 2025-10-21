@@ -1,7 +1,8 @@
 # SAA - Sistemas de Aprendizaje Automático
 
 ## Introducción
-En esta asignatura se ha trabajado la **carga, exploración y visualización de datos** mediante librerías de Python, enfocándose en la comprensión, análisis y comunicación visual de la información.  
+En esta asignatura se ha trabajado la **carga, exploración y visualización de datos** mediante librerías de Python, enfocándose en la comprensión, análisis y comunicación visual de la información. 
+
 El objetivo principal ha sido **desarrollar habilidades en el manejo de datasets reales**, su representación gráfica y la interpretación de patrones relevantes para la toma de decisiones.
 
 ---
@@ -22,6 +23,7 @@ Se visualizó el curso de YouTube “TUTORIAL SEABORN DESDE CERO”, con una dur
 [Tutorial Seaborn desde Cero - Codificando Bits](https://www.youtube.com/watch?reload=9&v=4Ez4mbhIk_I&sttick=0)
 
 **Aprendizajes clave:**
+
 - Creación de gráficos estadísticos con `seaborn`.  
 - Personalización de colores, estilos y temas.  
 - Representación de distribuciones y relaciones entre variables.  
@@ -33,6 +35,7 @@ Se visualizó el curso de YouTube “TUTORIAL SEABORN DESDE CERO”, con una dur
 ### Generación de Visualizaciones
 
 **Ejemplos de visualizaciones:**
+
 - Gráfico de barras  
 - Gráfico de líneas  
 - Diagrama de dispersión  
@@ -53,6 +56,7 @@ Se visualizó el curso de YouTube “TUTORIAL SEABORN DESDE CERO”, con una dur
 
 ### Concepto General
 La **visualización de datos** es la representación gráfica de la información para facilitar la comprensión de grandes volúmenes de datos.  
+
 A través de gráficos, tablas y dashboards, se pueden identificar **tendencias, patrones y valores atípicos** de forma rápida y efectiva.
 
 ---

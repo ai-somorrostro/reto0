@@ -7,9 +7,10 @@
 En primer lugar, accedimos a una página fiable que nos proporcionaba datos sobre el mercado financiero, nos descargamos los ficheros (stocks.csv y cryptocurrency.csv) y realizamos la limpieza de los ficheros para su corrercta subida de datos a influxDB. La primera subida fué a través de node-RED y la segunda a través de pandas.
 
 **Herramientas utilizadas:**  
+
 - Node-RED  
 - Python (pandas)  
-- InfluxDB
+- InfluxDB  
 - Grafana  
 ---
 
@@ -37,6 +38,7 @@ El csv de las criptomonedas lo cargamos a través de pandas. Primero, nos asegur
 ### Tarea 1: stocks.csv
 
 **Configuración:**  
+
 - Bucket: livemarket 
 - Measurement: stocks 
 - Fields: last, high, low, chg_, chg_percent, volume.

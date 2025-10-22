@@ -7,7 +7,7 @@
 ## **[Landing page](https://ai-somorrostro.github.io/reto0)**
 ## En caso de que el requirements.txt de problemas, Posibles soluciones:
 ### Actualizar pip, setuptools y wheel
-Estos son esenciales para instalar muchos paquetes. Puedes actualizarlos así:
+Estos son esenciales para instalar muchos paquetes, entra en tu entorno virtual y ejecutas este comando. Puedes actualizarlos así:
 
 ```bash
 python -m pip install --upgrade pip setuptools wheel
@@ -18,7 +18,7 @@ python -m pip install --upgrade pip setuptools wheel
 ```bash
 sudo apt update && sudo apt upgrade
 ```
-Esto puede instalar o actualizar librerías necesarias para compilar paquetes como lxml, psycopg2, etc.
+Esto puede instalar o actualizar librerías necesarias para compilar paquetes como lxml, psycopg2, etc. Hazlo fuera de tu entorno virtual.
 
 
 # Guia de Instalación del proyecto
@@ -35,6 +35,9 @@ Esto puede instalar o actualizar librerías necesarias para compilar paquetes co
  - En la terminal (ya sea en la propia maquina o atraves de ssh) nos desplazamos a la carpeta PIA.
 
     ![terminal_1](recursos_readme/terminal_1.png)
+
+ - Dentro de esa carpeta, encontrarás un fichero llamado .env.example, entra dentro y quita los valores con corchetes(ej: VALOR_DE_ENTORNO=loquesea --> VALOR_DE_ENTORNO=) y rellenalo con tus valores seleccionados (recomendamos que se deje como esta).
+ - Después, renombra el fechero de .env.example a .env y ya estaria.
 
 ## Paso 3
  - Despues, en esa misma terminal ejecutamos el siguiente comando, veremos como se empieza a descargar las imagenes y dependencias de todo lo que tiene que usar, tarda un poco:

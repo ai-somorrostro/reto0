@@ -5,6 +5,21 @@
 - Aritz Basarrate
 
 ## **[Landing page](https://ai-somorrostro.github.io/reto0)**
+## En caso de que el requirements.txt de problemas, Posibles soluciones:
+### Actualizar pip, setuptools y wheel
+Estos son esenciales para instalar muchos paquetes. Puedes actualizarlos así:
+
+```bash
+python -m pip install --upgrade pip setuptools wheel
+```
+## Actualizar paquetes del sistema
+### En Linux/macOS:
+
+```bash
+sudo apt update && sudo apt upgrade
+```
+Esto puede instalar o actualizar librerías necesarias para compilar paquetes como lxml, psycopg2, etc.
+
 
 # Guia de Instalación del proyecto
 ### Este repositorio contiene las imagenes de Grafana, InfluxDB y Node-red, si las tienes instaladas en tu maquina linux, desactivalas.
